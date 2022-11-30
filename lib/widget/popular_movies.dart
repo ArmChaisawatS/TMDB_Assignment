@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb_application/screen/description.dart';
 import 'package:tmdb_application/utils/text.dart';
 
 class PopularMovies extends StatelessWidget {
@@ -22,7 +23,21 @@ class PopularMovies extends StatelessWidget {
               itemCount: popular.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DescriptionScreen(
+                          name: popular[index]['title'],
+                          description: popular[index]['overview'],
+                          bannerurl: url + popular[index]['backdrop_path'],
+                          posterurl: url + popular[index]['poster_path'],
+                          vote: popular[index]['vote_average'].toString(),
+                          launchon: popular[index]['release_date'],
+                        ),
+                      ),
+                    );
+                  },
                   child: Column(
                     children: [
                       Container(
