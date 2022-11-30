@@ -32,7 +32,7 @@ class PopularMovies extends StatelessWidget {
                           description: popular[index]['overview'],
                           bannerurl: url + popular[index]['backdrop_path'],
                           posterurl: url + popular[index]['poster_path'],
-                          vote: popular[index]['vote_average'].toString(),
+                          vote: popular[index]['vote_average'],
                           launchon: popular[index]['release_date'],
                         ),
                       ),

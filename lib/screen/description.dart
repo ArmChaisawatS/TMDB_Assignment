@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:tmdb_application/utils/text.dart';
 
 class DescriptionScreen extends StatelessWidget {
@@ -17,19 +18,20 @@ class DescriptionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey,
       body: Container(
         padding: const EdgeInsets.all(0),
         child: ListView(
           children: [
             Container(
+              height: 365,
               padding: const EdgeInsets.all(0),
               child: Stack(
                 children: [
                   Positioned(
                     child: Container(
                       padding: EdgeInsets.zero,
-                      height: 300,
+                      height: 350,
                       width: MediaQuery.of(context).size.width,
                       child: Image.network(
                         posterurl,
@@ -37,15 +39,25 @@ class DescriptionScreen extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    bottom: 10,
-                    child: ModifiedText(
-                      text: 'Average Rating - $vote',
-                      color: Colors.white,
-                      size: 20,
+                    bottom: 0,
+                    left: 85,
+                    child: CircularPercentIndicator(
+                      center: ModifiedText(
+                        text: '$vote %',
+                        color: Colors.white,
+                        size: 15,
+                      ),
+                      radius: 25,
+                      lineWidth: 5.0,
+                      percent: vote / 10,
+                      progressColor: Colors.red,
                     ),
                   ),
                 ],
               ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Container(
               padding: const EdgeInsets.all(0),
