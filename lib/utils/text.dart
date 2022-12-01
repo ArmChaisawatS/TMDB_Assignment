@@ -5,11 +5,13 @@ class ModifiedText extends StatelessWidget {
   final String text;
   final Color color;
   final double size;
+  final TextAlign textAlign;
   const ModifiedText({
     super.key,
     required this.text,
     required this.color,
     required this.size,
+    required this.textAlign,
   });
 
   @override
@@ -20,7 +22,7 @@ class ModifiedText extends StatelessWidget {
         color: color,
         fontSize: size,
       ),
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
     );
   }
 }

@@ -57,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'The Popular Movies',
               color: Colors.black,
               size: 26,
+              textAlign: TextAlign.center,
             ),
             PopularMovies(popular: popularmovies),
           ],
