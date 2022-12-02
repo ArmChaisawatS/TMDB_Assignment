@@ -20,7 +20,7 @@ class PopularMovies extends StatelessWidget {
             height: 535,
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 0.53),
+                  crossAxisCount: 2, childAspectRatio: 0.57),
               itemCount: popular.length,
               itemBuilder: (context, index) {
                 return InkWell(
@@ -31,7 +31,9 @@ class PopularMovies extends StatelessWidget {
                         builder: (context) => DescriptionScreen(
                           name: popular[index]['title'],
                           description: popular[index]['overview'],
-                          bannerurl: url + popular[index]['backdrop_path'],
+                          bannerurl: popular[index]['backdrop_path'] == "null"
+                              ? ''
+                              : url + popular[index]['poster_path'].toString(),
                           posterurl: url + popular[index]['poster_path'],
                           vote: popular[index]['vote_average'],
                           launchon: popular[index]['release_date'],
@@ -42,12 +44,13 @@ class PopularMovies extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
+                        height: 260,
                         padding: const EdgeInsets.all(0),
                         child: Stack(
                           children: [
                             Positioned(
                               child: Container(
-                                height: 280,
+                                height: 250,
                                 width: 170,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
@@ -63,8 +66,8 @@ class PopularMovies extends StatelessWidget {
                               bottom: 0,
                               left: 20,
                               child: Container(
-                                height: 40,
-                                width: 40,
+                                height: 35,
+                                width: 35,
                                 padding: const EdgeInsets.all(0),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30),
@@ -82,7 +85,7 @@ class PopularMovies extends StatelessWidget {
                                     textAlign: TextAlign.center,
                                   ),
                                   radius: 16,
-                                  lineWidth: 3.0,
+                                  lineWidth: 2.0,
                                   percent: popular[index]['vote_average'] / 10,
                                 ),
                               ),
@@ -97,9 +100,11 @@ class PopularMovies extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       ModifiedText(
-                          text: popular[index]['release_date'] ?? 'Loading',
-                          color: Colors.grey,
-                          size: 14,textAlign: TextAlign.center,)
+                        text: popular[index]['release_date'] ?? 'Loading',
+                        color: Colors.grey,
+                        size: 14,
+                        textAlign: TextAlign.center,
+                      )
                     ],
                   ),
                 );

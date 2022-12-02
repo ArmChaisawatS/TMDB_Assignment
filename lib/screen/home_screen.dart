@@ -31,9 +31,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
     Map popularResult = await tmdbWitCustomLogs.v3.movies.getPopular();
-    setState(() {
-      popularmovies = popularResult['results'];
-    });
+    setState(
+      () {
+        popularmovies = popularResult['results'];
+      },
+    );
   }
 
   @override
@@ -44,8 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Container(
           padding: const EdgeInsets.all(8.0),
           child: SvgPicture.asset(
-            'assets/images/svglogo.svg',
-            height: 20,
+            'assets/images/logo.svg',
+            height: 15,
           ),
         ),
       ),
